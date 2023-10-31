@@ -85,7 +85,7 @@ ${_xacro_err}")
   execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink "${PROJECT_SOURCE_DIR}" "${PROJECT_BUILD_INDEX}/share/${PROJECT_NAME}")
 
   ## command to actually call xacro
-  list(JOIN AMENT_PREFIX_PATH ":" AMENT_PREFIX_PATH_ENV)
+  list(JOIN AMENT_PREFIX_PATH ":" AMENT_PREFIX_PATH_ENV) # format as colon-separated list
   add_custom_command(OUTPUT ${abs_output}
     COMMAND ${CMAKE_COMMAND} -E env AMENT_PREFIX_PATH="${PROJECT_BUILD_INDEX}:${AMENT_PREFIX_PATH_ENV}" xacro -o ${abs_output} ${input} ${_XACRO_REMAP}
     DEPENDS ${input} ${_xacro_deps_result} ${_XACRO_DEPENDS}
